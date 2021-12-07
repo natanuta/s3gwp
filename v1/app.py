@@ -4,6 +4,18 @@ import boto3, os
 # set the project root directory as the static folder, you can set others.
 app = Flask(__name__, static_url_path='')
 
+# Health check
+@app.route('/hello')
+def hello():
+    return 'Hello, Alla'
+
+
+# Health check 2
+@app.route('/health')
+def health():
+    return 'ok'
+
+
 @app.route('/path/<path:subpath>')
 def dl_file(subpath):
     # show the subpath after /path/
